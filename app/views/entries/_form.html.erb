@@ -1,0 +1,51 @@
+<style>
+.stext {
+float:left;
+margin-left:10px;
+}
+</style>
+
+<%= form_for(@entry) do |f| %>
+  <% if @entry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
+
+      <ul>
+      <% @entry.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div style="width:60%; margin-left:10%;">
+  <div class="field" style="float:left;margin-left:5px;">
+    <%= f.label :date %><br>
+    <%= f.datetime_select :date %>
+  </div>
+  <div class="field" style="float:left;margin-left:5px;">
+    <%= f.label :Status %><br>
+   <%= f.select :status, options_for_select([["Open", "Open"], ["Closed", "Closed"], ["In Progress", "In Progress"]]) %>
+  </div>
+  <div class="field", style="float:left;margin-left:5px;">
+    <%= f.label :Code %><br>
+    <%= f.select :code, options_for_select([["AU20", "AU020"], ["AU022", "AU022"], ["AU025", "AU025"]]) %>
+  </div>
+  <div class="field", style="margin-left:5px;">
+    <%= f.label :escalated %><br>
+    <%= f.check_box :escalated, {},'Yes', 'No' %>
+  </div>
+  <div class="field">
+    <%= f.label :summary %><br>
+    <%= f.text_area :summary, :size =>"50" %>
+  </div>
+  <div class="field">
+    <%= f.label :Initials %><br>
+    <%= f.text_field :created_by, :size=>"5" %>
+  </div>
+  <div class="actions" style="padding-left:10;">
+    <%= f.submit %>
+  </div>
+</div>
+<% end %>

@@ -1,0 +1,50 @@
+<style>
+td, td{
+padding:5,0;
+}
+.odd {background-color:rgb(220,220,220);}
+.even{background-color:silver;}
+</style>
+<div style="Width:80%;margin-left:auto;margin-right:auto;background-color:white;">
+<img src="/msalogo.png" style="display:block; float:left;width:35%;">
+<h1  style="display:block; float:left;padding-left:15px">Cyber Security Tier 1 Log</h1>
+<div style="clear:both;">
+<p id="notice"><%= notice %></p>
+<%= link_to 'New Entry', new_entry_path %>
+<%= link_to 'Excel', entries_path(format: "xlsx")%>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>	
+      <th>Date</th>
+      <th>Code</th>
+      <th>Escalated</th>
+      <th>Status</th>
+      <th>Created by</th>
+      <th>Summary</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @entries.each do |entry| %>
+      <tr class="<%= cycle('even', 'odd') -%>">
+        <td style="width:2em;"> <%= link_to entry.id, entry_path(entry) %></td>
+        <td align="center", style="width:10em;"><%= entry.date.strftime("%D %R") %></td>
+        <td style="width:4em;"><%= entry.code %></td>
+        <td  align="center"><%= entry.escalated %></td>
+        <td><%= entry.status %></td>
+        <td style="width:8em;padding-left:10;"><%= entry.created_by %></td>
+        <td><%= entry.summary %></td>
+	<td><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+</div>
+

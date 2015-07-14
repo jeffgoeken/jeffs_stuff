@@ -1,0 +1,6 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Entries") do |sheet|
+  @entries.each do |entry|
+    sheet.add_row [entry.id, entry.date, entry.code]
+  end
+end

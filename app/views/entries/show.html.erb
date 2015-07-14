@@ -1,0 +1,57 @@
+<h2>Entry</h2>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @entry.date %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @entry.code %>
+
+  <strong>Escalated:</strong>
+  <%= @entry.escalated %>
+<strong>Status:</strong>
+  <%= @entry.status %>
+  <strong>Created by:</strong>
+  <%= @entry.created_by %>
+</p>
+<p>
+  <strong>Summary:</strong>
+  <%= @entry.summary %>
+</p>
+
+
+<h3>Notes</h3>
+<% @entry.notes.each do |note| %>
+  <p style="float:left;width:70%">
+    <strong>Note:</strong>
+    <%= note.Body %>
+  </p>
+
+  <p>
+    <strong>Initials:</strong>
+    <%= note.Initials %>
+  <strong>Create At</strong>
+  <%= note.created_at %>
+<hr style="clear:both;">
+<% end %>
+
+<h2>Add a Note:</h2>
+<%= form_for([@entry, @entry.notes.build]) do |f| %>
+  <p>
+    <%= f.label :Body %><br>
+    <%= f.text_area :Body, :size =>"50"%>
+  </p>
+  <p>
+    <%= f.label :Initials %><br>
+    <%= f.text_field :Initials %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+<%= link_to 'Edit', edit_entry_path(@entry) %> |
+<%= link_to 'Back', entries_path %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2015-07-02 14:03:20
+  code: MyString
+  escalated: MyString
+  summary: MyText
+  status: MyString
+  created_by: MyString
+
+two:
+  date: 2015-07-02 14:03:20
+  code: MyString
+  escalated: MyString
+  summary: MyText
+  status: MyString
+  created_by: MyString
