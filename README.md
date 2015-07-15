@@ -7,7 +7,7 @@ Things you may want to cover:
 
 * Ruby version: 2.2.2 
 
-* System dependencies
+* System dependencies: Lots
 
 * Configuration
 
